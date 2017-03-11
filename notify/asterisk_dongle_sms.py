@@ -79,7 +79,7 @@ class AsteriskNotificationService(BaseNotificationService):
         client.logoff()
 
     def _on_message(self, phone, response):
-        if response.status is not 'Success':
-            _LOGGER.exception("Error sending SMS to %s. Response %s. Keys: %s", phone, response.status, response.keys)
+        if response.status != 'Success':
+            _LOGGER.exception("Error sending SMS to %s. Response: %s. Keys: %s", phone, response.status, response.keys)
         else:
             _LOGGER.debug("SMS to %s successful", phone)
