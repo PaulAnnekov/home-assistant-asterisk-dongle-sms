@@ -63,13 +63,14 @@ class AsteriskNotificationService(BaseNotificationService):
             _LOGGER.exception("No SMS targets, as 'target' is not defined")
             return
 
+        # TODO: add quota per day
         for target in targets:
             _LOGGER.debug("Sending SMS to %s", target)
             action = SimpleAction(
-                    'DongleSendSMS',
-                    Device=self._dongle,
-                    Number=target,
-                    Message=message,
+                'DongleSendSMS',
+                Device=self._dongle,
+                Number=target,
+                Message=message,
             )
             client.send_action(action, callback=lambda r: self._on_message(target, r))
             _LOGGER.debug("SMS to %s sent", target)
