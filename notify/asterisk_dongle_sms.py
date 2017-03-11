@@ -28,7 +28,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 _LOGGER = logging.getLogger(__name__)
 
 
-def get_service(hass, config):
+def get_service(hass, config, discovery_info=None):
     """Get the Asterisk notification service."""
     dongle = config.get(CONF_DONGLE)
     address = config.get(CONF_ADDRESS)
