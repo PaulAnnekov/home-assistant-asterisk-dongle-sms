@@ -56,12 +56,15 @@ class AsteriskNotificationService(BaseNotificationService):
         from asterisk.ami.action import SimpleAction
 
         client = AMIClient(address=self._address, port=self._port)
-        client.login(username=self._user, secret=self._password)
+        future = client.login(username=self._user, secret=self._password)
+        if future.response.is_error():
+            _LOGGER.error("Can't connect to Asterisk AMI: %s", " ".join(str(future.response).splitlines()))
+            return
 
         targets = kwargs.get(ATTR_TARGET)
 
         if targets is None:
-            _LOGGER.exception("No SMS targets, as 'target' is not defined")
+            _LOGGER.error("No SMS targets, as 'target' is not defined")
             return
 
         # TODO: add quota per day
@@ -79,7 +82,7 @@ class AsteriskNotificationService(BaseNotificationService):
         client.logoff()
 
     def _on_message(self, phone, response):
-        if response.status != 'Success':
-            _LOGGER.exception("Error sending SMS to %s. Response: %s. Keys: %s", phone, response.status, response.keys)
+        if response.is_error():
+            _LOGGER.exception("Error sending SMS to %s. Response: %s", phone, " ".join(str(response).splitlines()))
         else:
             _LOGGER.debug("SMS to %s successful", phone)
