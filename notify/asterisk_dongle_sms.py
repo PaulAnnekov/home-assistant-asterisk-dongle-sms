@@ -8,8 +8,6 @@ import voluptuous as vol
 from homeassistant.components.notify import (
     ATTR_TARGET, BaseNotificationService, PLATFORM_SCHEMA)
 import homeassistant.helpers.config_validation as cv
-from asterisk.ami import AMIClient
-from asterisk.ami.action import SimpleAction
 
 REQUIREMENTS = ['asterisk-ami==0.1.0']
 
@@ -54,6 +52,9 @@ class AsteriskNotificationService(BaseNotificationService):
 
     def send_message(self, message="", **kwargs):
         """Send an SMS to target users."""
+        from asterisk.ami import AMIClient
+        from asterisk.ami.action import SimpleAction
+
         client = AMIClient(address=self._address, port=self._port)
         client.login(username=self._user, secret=self._password)
 
