@@ -1,0 +1,9 @@
+{
+    "domain": "asterisk_dongle_sms",
+    "name": "Asterisk Dongle SMS",
+    "documentation": "https://github.com/PaulAnnekov/home-assistant-padavan-tracker",
+    "dependencies": [],
+    "requirements": ["asterisk-ami==0.1.0"],
+    "codeowners": ["@PaulAnnekov"],
+    "version": "1.0.0"
+  }

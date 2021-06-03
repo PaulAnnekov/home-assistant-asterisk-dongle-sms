@@ -1,16 +1,25 @@
 # Home Assistant SMS Notification via Asterisk AMI DongleSendSMS
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
+
 This notification component allows you to send SMS via your GSM dongle connected to Asterisk via 
 [chan_dongle](https://github.com/bg111/asterisk-chan-dongle) driver. It uses Asterisk AMI api to send DongleSendSMS 
 command.
 
-Installation
-------------
+## Installation
 
-1. Copy `notify/asterisk_dongle_sms.py` to `custom_components/notify/` 
+### HACS
+
+[Guide](https://hacs.xyz/docs/faq/custom_repositories/)
+
+### Manual
+
+Copy `custom_components/asterisk_dongle_sms/` contents from repo into `custom_components/asterisk_dongle_sms/` 
    [directory](https://home-assistant.io/developers/component_loading/).
 
-2. Configure Asterisk AMI by editing `/etc/asterisk/manager.conf`:
+## Configuration
+
+1. Configure Asterisk AMI by editing `/etc/asterisk/manager.conf`:
    
    ```ini
    [general]

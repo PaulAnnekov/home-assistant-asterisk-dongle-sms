@@ -9,8 +9,6 @@ from homeassistant.components.notify import (
     ATTR_TARGET, BaseNotificationService, PLATFORM_SCHEMA)
 import homeassistant.helpers.config_validation as cv
 
-REQUIREMENTS = ['asterisk-ami==0.1.0']
-
 CONF_DONGLE = 'dongle'
 CONF_ADDRESS = 'address'
 CONF_PORT = 'port'

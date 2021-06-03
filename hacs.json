@@ -1,0 +1,6 @@
+{
+    "name": "Asterisk Dongle SMS",
+    "render_readme": true,
+    "domains": ["notify"],
+    "iot_class": ["Local Polling"]
+}

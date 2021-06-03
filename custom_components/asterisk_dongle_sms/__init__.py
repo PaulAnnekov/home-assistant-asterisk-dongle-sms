@@ -1,0 +1,1 @@
+"""The Asterisk Dongle SMS component."""
